@@ -1,0 +1,26 @@
+# Moegi Iris — Ghostty theme
+# Generated from moegi.nvim (https://github.com/moegi-design/vscode-theme)
+
+palette = 0=#635768
+palette = 1=#e47474
+palette = 2=#66b395
+palette = 3=#e2c97e
+palette = 4=#7098d4
+palette = 5=#b290ba
+palette = 6=#6ab8c0
+palette = 7=#e8dfd7
+palette = 8=#938798
+palette = 9=#f48484
+palette = 10=#76c3a5
+palette = 11=#f2d98e
+palette = 12=#80a8e4
+palette = 13=#c2a0ca
+palette = 14=#7ac8d0
+palette = 15=#efeaf5
+
+background = #f5f2f9
+foreground = #433748
+cursor-color = #e38181
+cursor-text = #f5f2f9
+selection-background = #e2dfe6
+selection-foreground = #433748

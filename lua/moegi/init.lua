@@ -25,7 +25,7 @@ local function default_variant()
 end
 
 --- Apply the colorscheme.
----@param variant string|nil  overrides config.variant for this call
+---@param variant MoegiVariant|nil  overrides config.variant for this call
 function M.load(variant)
   if vim.g.colors_name then
     vim.cmd("highlight clear")
@@ -59,8 +59,8 @@ function M.load(variant)
 end
 
 --- Return the resolved palette for a variant without applying it.
----@param variant string|nil
----@return table
+---@param variant MoegiVariant|nil
+---@return MoegiPalette
 function M.colors(variant)
   local name = variant or config.options.variant or default_variant()
   return require("moegi.theme").resolve_palette(palettes.load(name))

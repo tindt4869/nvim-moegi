@@ -1,0 +1,103 @@
+-- LuaCATS type definitions.
+--
+-- These annotations let lua_ls offer field completion and type checking inside
+-- `require("moegi").setup({ ... })`. This file holds no runtime code; it exists
+-- only so the types live in one place and can be referenced from anywhere.
+--
+-- Tip: with folke/lazydev.nvim (or lua_ls workspace libraries) configured, the
+-- completion below works out of the box once the plugin is installed.
+
+---Variant slug. Used by `:colorscheme moegi-<variant>` and `config.variant`.
+---@alias MoegiVariant
+---| "dark"          # Moegi Dark (flagship)
+---| "dark_vitesse"  # Moegi Dark Vitesse
+---| "black"         # Moegi Black
+---| "black_zen"     # Moegi Black Zen (near-monochrome)
+---| "space"         # Moegi Space
+---| "light"         # Moegi Light
+---| "light_vitesse" # Moegi Light Vitesse
+---| "dawn"          # Moegi Dawn
+---| "iris"          # Moegi Iris
+
+---A font-style override merged into a highlight spec.
+---Any `vim.api.keyset.highlight` attribute is accepted (`bold`, `underline`, …).
+---@alias MoegiStyle vim.api.keyset.highlight
+
+---Per-token font styles. Each entry is merged into that token's highlight.
+---@class MoegiStyles
+---@field comments? MoegiStyle
+---@field keywords? MoegiStyle
+---@field functions? MoegiStyle
+---@field variables? MoegiStyle
+---@field strings? MoegiStyle
+---@field types? MoegiStyle
+---@field booleans? MoegiStyle
+
+---Plugin integration toggles. `true`/`false` for all, or a per-plugin map.
+---Keys match the modules in `lua/moegi/groups/plugins/`.
+---@class MoegiPluginsSpec
+---@field gitsigns? boolean
+---@field telescope? boolean
+---@field cmp? boolean
+---@field blink? boolean
+---@field nvimtree? boolean
+---@field neotree? boolean
+---@field bufferline? boolean
+---@field indent_blankline? boolean
+---@field whichkey? boolean
+---@field notify? boolean
+---@field trouble? boolean
+---@field flash? boolean
+---@field lazy? boolean
+---@field mason? boolean
+---@field dap? boolean
+---@field mini? boolean
+---@field rainbow_delimiters? boolean
+---@field illuminate? boolean
+---@field navic? boolean
+---@field treesitter_context? boolean
+
+---@class MoegiConfig
+---@field variant? MoegiVariant Variant to load. When nil, follows `vim.o.background`.
+---@field transparent? boolean Clear background colors so the terminal shows through.
+---@field dim_inactive? boolean Dim the background of inactive windows.
+---@field styles? MoegiStyles Per-token font styles.
+---@field plugins? boolean|MoegiPluginsSpec Enable plugin integrations.
+---@field on_palette? fun(palette: MoegiPalette) Mutate the palette before highlights are built.
+---@field on_highlights? fun(highlights: table<string, vim.api.keyset.highlight>, palette: MoegiPalette) Mutate or extend the final highlight table.
+
+---Resolved palette passed to `on_palette` / `on_highlights`. Every value is a
+---solid "#rrggbb" string. See `lua/moegi/palettes/README.md` for the full list.
+---@class MoegiPalette
+---@field name string
+---@field background "dark"|"light"
+---@field bg string
+---@field bg_dark string
+---@field bg_float string
+---@field bg_popup string
+---@field bg_highlight string
+---@field bg_visual string
+---@field bg_statusline string
+---@field fg string
+---@field fg_ui string
+---@field fg_dim string
+---@field fg_disabled string
+---@field linenr string
+---@field cursor string
+---@field border string
+---@field primary string
+---@field secondary string
+---@field link string
+---@field error string
+---@field warning string
+---@field info string
+---@field hint string
+---@field git_add string
+---@field git_change string
+---@field git_delete string
+---@field syntax table<string, string>
+---@field semantic table<string, string>
+---@field bracket string[]
+---@field terminal table<string, string>
+
+return {}

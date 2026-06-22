@@ -1,0 +1,26 @@
+# Moegi Black Zen — Ghostty theme
+# Generated from moegi.nvim (https://github.com/moegi-design/vscode-theme)
+
+palette = 0=#292929
+palette = 1=#ad8686
+palette = 2=#859891
+palette = 3=#b3aa8f
+palette = 4=#7789a3
+palette = 5=#8e7a93
+palette = 6=#698a8e
+palette = 7=#adadad
+palette = 8=#393939
+palette = 9=#bd9696
+palette = 10=#95a8a1
+palette = 11=#c3ba9f
+palette = 12=#8799b3
+palette = 13=#9e8aa3
+palette = 14=#799a9e
+palette = 15=#bdbdbd
+
+background = #0d0d0d
+foreground = #dddddd
+cursor-color = #ff8787
+cursor-text = #0d0d0d
+selection-background = #2a2a2a
+selection-foreground = #dddddd

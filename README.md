@@ -65,6 +65,34 @@ local c = require("moegi").colors("dark")  -- resolved palette, no apply
 local p = require("moegi.palettes").load("space")  -- raw palette
 ```
 
+## Statusline (lualine)
+
+A matching lualine theme follows whichever Moegi variant is active:
+
+```lua
+require("lualine").setup({ options = { theme = "moegi" } })
+```
+
+lualine reads its theme once at setup. To keep it in sync when you switch
+variants at runtime, refresh on `ColorScheme`:
+
+```lua
+vim.api.nvim_create_autocmd("ColorScheme", {
+  pattern = "moegi",
+  callback = function()
+    package.loaded["lualine.themes.moegi"] = nil
+    require("lualine").setup({ options = { theme = "moegi" } })
+  end,
+})
+```
+
+## Terminal (Ghostty)
+
+Per-variant Ghostty themes live in [`extras/ghostty/`](extras/ghostty/) — copy
+one into `~/.config/ghostty/themes/` and set `theme = moegi-dark` in your config.
+See [`extras/ghostty/README.md`](extras/ghostty/README.md) for details and
+system light/dark auto-switching.
+
 ## Architecture
 
 Small, single-purpose modules. Adding colors or plugins is a localized change.
@@ -76,8 +104,10 @@ colors/
 lua/moegi/
   init.lua             public API: setup / load / colors
   config.lua           defaults + merge
+  types.lua            LuaCATS annotations (setup() completion)
   util.lua             color math (alpha-flatten, blend, shade)
   theme.lua            resolves palette, merges all group modules
+  lualine.lua          builds the lualine theme from a palette
   palettes/            one table per variant (see palettes/README.md)
   groups/
     editor.lua         core UI groups
@@ -88,6 +118,11 @@ lua/moegi/
     plugins/
       init.lua         aggregator + per-plugin toggles
       <plugin>.lua     one file per plugin
+lua/lualine/themes/
+  moegi.lua            lualine theme shim (theme = "moegi")
+extras/
+  gen_ghostty.lua      regenerates the Ghostty themes
+  ghostty/             one Ghostty theme per variant
 ```
 
 **Data flow:** a variant palette → `util` flattens the upstream 8-digit

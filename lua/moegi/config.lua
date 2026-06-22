@@ -1,8 +1,10 @@
 -- User configuration: defaults + merge.
 
+-- Type definitions live in lua/moegi/types.lua (MoegiConfig, MoegiVariant, …).
+
 local M = {}
 
----@class MoegiConfig
+---@type MoegiConfig
 M.defaults = {
   -- Variant slug (see `require("moegi.palettes").variants`).
   -- When nil, the variant is derived from `vim.o.background`
@@ -31,15 +33,14 @@ M.defaults = {
   -- plugin; pass a table to enable a subset, e.g. { gitsigns = false }.
   plugins = true,
 
-  ---Mutate the palette before highlights are built.
-  ---@type fun(palette: table)|nil
+  -- Mutate the palette before highlights are built.
   on_palette = nil,
 
-  ---Mutate or extend the final highlight table.
-  ---@type fun(highlights: table, palette: table)|nil
+  -- Mutate or extend the final highlight table.
   on_highlights = nil,
 }
 
+---@type MoegiConfig
 M.options = vim.deepcopy(M.defaults)
 
 ---@param opts MoegiConfig|nil

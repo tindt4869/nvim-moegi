@@ -1,0 +1,26 @@
+# Moegi Space — Ghostty theme
+# Generated from moegi.nvim (https://github.com/moegi-design/vscode-theme)
+
+palette = 0=#38324d
+palette = 1=#e47474
+palette = 2=#66b395
+palette = 3=#e2c97e
+palette = 4=#7098d4
+palette = 5=#b290ba
+palette = 6=#6ab8c0
+palette = 7=#dddddd
+palette = 8=#68627d
+palette = 9=#f48484
+palette = 10=#76c3a5
+palette = 11=#f2d98e
+palette = 12=#80a8e4
+palette = 13=#c2a0ca
+palette = 14=#7ac8d0
+palette = 15=#f6f6f6
+
+background = #221e30
+foreground = #ddd8e4
+cursor-color = #ff8787
+cursor-text = #221e30
+selection-background = #3c3849
+selection-foreground = #ddd8e4
